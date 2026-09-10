@@ -1,0 +1,412 @@
+/* CoLab Spark — Site Stylesheet
+   Palette carried over from the CoLab Spark document style guide (muted green gradient).
+   Type: Fraunces (display) + Inter (body).
+*/
+
+:root {
+  --dark-green: #33473A;
+  --mid-green: #5B7A5E;
+  --pale-green: #E7EEE4;
+  --line-green: #4F6F52;
+  --ink: #2B2B2B;
+  --white: #FFFFFF;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+
+  --max-width: 1180px;
+  --gutter: clamp(1.5rem, 4vw, 4rem);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: var(--dark-green);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--dark-green);
+  margin: 0 0 0.5em;
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); }
+h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); }
+h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); }
+
+p { max-width: 68ch; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---------- Header / Nav ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--white);
+  border-bottom: 1px solid var(--pale-green);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--dark-green);
+  letter-spacing: 0.01em;
+}
+
+.site-nav {
+  display: flex;
+  gap: clamp(1.2rem, 3vw, 2.4rem);
+}
+
+.site-nav a {
+  font-size: 0.98rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.site-nav a.active,
+.site-nav a:hover {
+  color: var(--dark-green);
+  text-decoration: none;
+  border-bottom: 2px solid var(--mid-green);
+  padding-bottom: 2px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.7rem;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  border: 1.5px solid var(--dark-green);
+}
+
+.btn-solid {
+  background: var(--dark-green);
+  color: var(--white);
+}
+.btn-solid:hover {
+  background: var(--line-green);
+  text-decoration: none;
+  border-color: var(--line-green);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--dark-green);
+}
+.btn-outline:hover {
+  background: var(--pale-green);
+  text-decoration: none;
+}
+
+.btn-light {
+  border-color: var(--white);
+  color: var(--white);
+}
+.btn-light:hover {
+  background: var(--white);
+  color: var(--dark-green);
+  text-decoration: none;
+}
+
+/* ---------- Hero (Home) ---------- */
+
+.hero {
+  position: relative;
+  min-height: 86vh;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(43,43,43,0.15) 0%, rgba(43,43,43,0.55) 65%, rgba(43,43,43,0.82) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 4.5rem var(--gutter) 4rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero h1 { color: var(--white); max-width: 16ch; }
+
+.hero .eyebrow {
+  color: var(--pale-green);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.hero p.lede {
+  color: var(--white);
+  font-size: 1.2rem;
+  max-width: 52ch;
+  margin: 1.2rem 0 2rem;
+  opacity: 0.95;
+}
+
+/* ---------- Sections ---------- */
+
+section { padding: clamp(3.5rem, 7vw, 6.5rem) 0; }
+.section-pale { background: var(--pale-green); }
+
+.section-intro {
+  max-width: 62ch;
+  margin-bottom: 3rem;
+}
+.section-intro .kicker {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--mid-green);
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Bucket list (Home) ---------- */
+
+.bucket-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.bucket-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 2rem;
+  padding: 2.2rem 0;
+  border-top: 1px solid var(--pale-green);
+  align-items: baseline;
+}
+.bucket-row:last-child { border-bottom: 1px solid var(--pale-green); }
+
+.bucket-row .bucket-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--dark-green);
+}
+
+.bucket-row .bucket-desc { margin: 0; color: var(--ink); }
+.bucket-row .bucket-desc a { font-weight: 600; white-space: nowrap; }
+
+/* ---------- Testimonial ---------- */
+
+.testimonial {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.testimonial blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  color: var(--dark-green);
+  margin: 0 0 1.2rem;
+  line-height: 1.4;
+}
+.testimonial cite {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--mid-green);
+  display: block;
+}
+
+/* ---------- Case studies ---------- */
+
+.bucket-block { margin-bottom: 5rem; }
+.bucket-block:last-child { margin-bottom: 0; }
+
+.bucket-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 2px solid var(--line-green);
+  padding-bottom: 0.8rem;
+  margin-bottom: 2.2rem;
+}
+
+.bucket-header h2 { margin: 0; }
+.bucket-header .bucket-tag {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--mid-green);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Feature treatment: full-bleed photo, overlaid title, text runs below */
+.case-feature {
+  margin-bottom: 2.4rem;
+}
+.case-feature .photo {
+  position: relative;
+  min-height: 46vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+.case-feature .photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(43,43,43,0) 40%, rgba(43,43,43,0.75) 100%);
+}
+.case-feature .photo-caption {
+  position: relative;
+  z-index: 2;
+  padding: 2rem clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--white);
+}
+.case-feature .photo-caption .role {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--pale-green);
+  margin-bottom: 0.3rem;
+}
+.case-feature .photo-caption h3 { color: var(--white); margin: 0; }
+
+.case-feature .case-body {
+  background: var(--pale-green);
+  padding: 2rem clamp(1.5rem, 3vw, 2.5rem);
+}
+.case-feature .case-body p { max-width: none; margin: 0 0 0.9rem; }
+.case-feature .case-body .status {
+  font-size: 0.92rem;
+  color: var(--mid-green);
+  margin: 0;
+}
+
+/* Split treatment: photo one side, text the other, alternating */
+.case-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-bottom: 2.4rem;
+  border: 1px solid var(--pale-green);
+}
+.case-split .photo {
+  background-size: cover;
+  background-position: center;
+  min-height: 320px;
+}
+.case-split .case-body {
+  padding: 2.2rem clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.case-split.reverse { grid-template-columns: 1fr 1fr; }
+.case-split.reverse .photo { order: 2; }
+.case-split.reverse .case-body { order: 1; }
+
+.case-split .role {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--mid-green);
+  margin-bottom: 0.2rem;
+}
+.case-split h3 { margin-bottom: 0.8rem; }
+.case-split p { max-width: none; margin: 0 0 0.9rem; }
+.case-split .status {
+  font-size: 0.92rem;
+  color: var(--mid-green);
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .case-split, .case-split.reverse {
+    grid-template-columns: 1fr;
+  }
+  .case-split .photo, .case-split.reverse .photo { order: 1; min-height: 260px; }
+  .case-split .case-body, .case-split.reverse .case-body { order: 2; }
+  .bucket-row { grid-template-columns: 1fr; gap: 0.6rem; }
+}
+
+/* ---------- About page ---------- */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+.about-grid img { border: 1px solid var(--pale-green); }
+
+@media (max-width: 760px) {
+  .about-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Contact page ---------- */
+
+.contact-block {
+  background: var(--dark-green);
+  color: var(--white);
+  padding: clamp(3rem, 6vw, 5rem);
+}
+.contact-block h2 { color: var(--white); }
+.contact-block a { color: var(--white); font-weight: 600; }
+.contact-block .detail { font-size: 1.3rem; margin: 0.6rem 0; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--pale-green);
+  padding: 2.2rem 0;
+  margin-top: 2rem;
+}
+.site-footer .container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--mid-green);
+}
